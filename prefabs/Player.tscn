@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3q06in2bni0t"]
+[gd_scene load_steps=5 format=3 uid="uid://c3q06in2bni0t"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_nu8qe"]
-[ext_resource type="Texture2D" uid="uid://bu5l1sqywo580" path="res://sprites/chungus/chungus.png" id="2_tt50e"]
+[ext_resource type="SpriteFrames" uid="uid://ioqblwyk7adh" path="res://sprites/chungus/chungus.res" id="2_cnyho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6amv"]
 size = Vector2(32, 32)
@@ -9,70 +9,6 @@ size = Vector2(32, 32)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccrwv"]
 radius = 47.0
 height = 110.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j58mc"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4sro2"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_35hor"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbeh2"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihm6v"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_366ah"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_18sgx"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfawd"]
-atlas = ExtResource("2_tt50e")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_k5t25"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j58mc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4sro2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_35hor")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sbeh2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ihm6v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_366ah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_18sgx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfawd")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -92,6 +28,7 @@ shape = SubResource("CapsuleShape2D_ccrwv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_k5t25")
+sprite_frames = ExtResource("2_cnyho")
+animation = &"attack"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
