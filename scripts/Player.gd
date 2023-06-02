@@ -22,7 +22,7 @@ func _physics_process(_delta):
 	velocity = movement * SPEED
 
 	if movement_x:
-		$Sprite2D.flip_h = movement_x < 0
+		$AnimatedSprite2D.flip_h = movement_x < 0
 		attack_area.scale.x = -1 if movement_x < 0 else 1
 
 	if Input.is_action_just_pressed("ui_accept"):
