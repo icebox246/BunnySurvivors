@@ -7,5 +7,5 @@ func _ready():
 	game_master.register_health_bar(self)
 
 func _exit_tree():
-	game_master.register_sealth_bar(null)
+	game_master.register_health_bar(null)
 

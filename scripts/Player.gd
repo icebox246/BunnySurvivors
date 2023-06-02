@@ -32,12 +32,14 @@ func _physics_process(_delta):
 		$AnimatedSprite2D.flip_h = movement_x < 0
 		attack_area.scale.x = -1 if movement_x < 0 else 1
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if not attacking and Input.is_action_just_pressed("ui_accept"):
+		attacking = true
 		$AnimatedSprite2D.play('attack')
 
 	move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished():
+	print($AnimatedSprite2D.animation)
 	if $AnimatedSprite2D.animation == 'attack':
 		attacking = false
 		$AnimatedSprite2D.stop()
