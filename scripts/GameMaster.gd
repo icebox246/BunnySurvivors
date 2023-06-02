@@ -13,6 +13,7 @@ func player_position():
 		return Vector2(0,0)
 
 const SPAWN_INTERVAL = 5
+const SPAWN_RADIUS = 500
 var time_since_last_spawn = 0
 
 var bunny_prefab = preload("res://prefabs/Bunny.tscn")
@@ -23,4 +24,5 @@ func _process(delta):
 	if time_since_last_spawn >= SPAWN_INTERVAL:
 		time_since_last_spawn -= SPAWN_INTERVAL
 		var bunny = bunny_prefab.instantiate()
+		bunny.position = player_position() + Vector2.from_angle(randf() * PI * 2) * SPAWN_RADIUS
 		get_tree().current_scene.add_child(bunny)
