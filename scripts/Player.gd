@@ -19,6 +19,10 @@ func _physics_process(_delta):
 
 	var movement = Vector2(movement_x, movement_y)
 
+	if movement:
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
 	velocity = movement * SPEED
 
 	if movement_x:
