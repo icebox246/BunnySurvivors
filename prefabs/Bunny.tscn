@@ -1,10 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmry77ogopxjn"]
+[gd_scene load_steps=12 format=3 uid="uid://bmry77ogopxjn"]
 
 [ext_resource type="Script" path="res://scripts/Bunny.gd" id="1_vhhk6"]
-[ext_resource type="SpriteFrames" uid="uid://dp3fx77gtblcn" path="res://sprites/enemies/enemy.res" id="2_qq2bt"]
+[ext_resource type="Texture2D" uid="uid://bxkbmdr2f42v" path="res://sprites/enemies/enemy.png" id="2_fjqdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bnta"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7efvk"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctu71"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt4ra"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mld0"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exx8m"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k02s"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq2q7"]
+atlas = ExtResource("2_fjqdb")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gemx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7efvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctu71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt4ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mld0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt4ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exx8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k02s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq2q7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Bunny" type="CharacterBody2D"]
 position = Vector2(125, 171)
@@ -16,6 +76,5 @@ shape = SubResource("RectangleShape2D_1bnta")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = ExtResource("2_qq2bt")
-frame = 1
-frame_progress = 0.232479
+sprite_frames = SubResource("SpriteFrames_gemx6")
+frame_progress = 0.435517
