@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3q06in2bni0t"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_nu8qe"]
-[ext_resource type="Texture2D" uid="uid://bu5l1sqywo580" path="res://sprites/chungus/chungus.png" id="2_b03cs"]
+[ext_resource type="SpriteFrames" uid="uid://ioqblwyk7adh" path="res://sprites/chungus/chungus.res" id="2_cnyho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6amv"]
 size = Vector2(32, 32)
@@ -12,10 +12,6 @@ height = 110.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nu8qe")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_b03cs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
@@ -28,3 +24,6 @@ collision_mask = 2
 position = Vector2(53, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_ccrwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_cnyho")
