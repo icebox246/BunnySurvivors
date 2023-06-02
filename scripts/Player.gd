@@ -5,6 +5,8 @@ const SPEED = 100.0
 var attack_area
 var game_master
 
+var attacking = false
+
 func _ready():
 	attack_area = $AttackArea
 	game_master = $"/root/GameMaster"
@@ -19,10 +21,11 @@ func _physics_process(_delta):
 
 	var movement = Vector2(movement_x, movement_y)
 
-	if movement:
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
+	if not attacking:
+		if movement:
+			$AnimatedSprite2D.play('walk')
+		else:
+			$AnimatedSprite2D.stop()
 	velocity = movement * SPEED
 
 	if movement_x:
@@ -30,8 +33,14 @@ func _physics_process(_delta):
 		attack_area.scale.x = -1 if movement_x < 0 else 1
 
 	if Input.is_action_just_pressed("ui_accept"):
+		$AnimatedSprite2D.play('attack')
+
+	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished():
+	if $AnimatedSprite2D.animation == 'attack':
+		attacking = false
+		$AnimatedSprite2D.stop()
 		for body in attack_area.get_overlapping_bodies():
 			if body is Bunny:
 				body.bonk()
-
-	move_and_slide()
