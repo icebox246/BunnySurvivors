@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://fk7or7k1s7a8"]
+[gd_scene load_steps=9 format=3 uid="uid://fk7or7k1s7a8"]
 
 [ext_resource type="PackedScene" uid="uid://c3q06in2bni0t" path="res://prefabs/Player.tscn" id="1_lb2s8"]
 [ext_resource type="Texture2D" uid="uid://b3oq8vvvilrgy" path="res://sprites/tiles/tiles.png" id="2_ndmwc"]
 [ext_resource type="Script" path="res://scripts/ScoreLabel.gd" id="3_a4xtx"]
+[ext_resource type="Script" path="res://scripts/HealthBar.gd" id="4_o53s2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ftrf"]
 texture = ExtResource("2_ndmwc")
@@ -51,3 +52,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_hj36f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gg5e0")
 value = 50.0
 show_percentage = false
+script = ExtResource("4_o53s2")

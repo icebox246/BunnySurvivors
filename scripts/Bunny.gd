@@ -12,11 +12,11 @@ func _physics_process(_delta):
 	var distance = to_player.length()
 	to_player = to_player.normalized()
 
-	if distance > 60:
+	if distance > 120:
 		velocity = to_player * SPEED
 		if velocity.x:
 			$AnimatedSprite2D.flip_h = velocity.x > 0
-	elif attack_timer.is_paused():
+	elif attack_timer.is_stopped():
 		attack_timer.start()
 
 	move_and_slide()
@@ -26,5 +26,5 @@ func bonk():
 	queue_free()
 
 func _on_attack_timer_timeout():
-	print("Gnaw")
+	game_master.change_health(-1)
 

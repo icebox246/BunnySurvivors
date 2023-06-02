@@ -1,6 +1,8 @@
 extends Node
 
 var score = 0
+const MAX_HEALTH = 10
+var health = MAX_HEALTH
 
 var player_node = null
 
@@ -29,6 +31,21 @@ func _update_score_label():
 	if score_label_node:
 		score_label_node.text = "Score: " + str(score)
 
+var health_bar_node
+
+func register_health_bar(bar):
+	health_bar_node = bar
+	_update_health_bar()
+
+func change_health(d):
+	health += d
+	_update_health_bar()
+
+func _update_health_bar():
+	health_bar_node.value = health
+	health_bar_node.max_value = MAX_HEALTH
+
+
 const SPAWN_INTERVAL = 3
 const SPAWN_RADIUS = 500
 var time_since_last_spawn = 4
@@ -44,5 +61,4 @@ func _process(delta):
 			var bunny = bunny_prefab.instantiate()
 			bunny.position = player_position() + Vector2.from_angle(randf() * PI * 2) * SPAWN_RADIUS
 			get_tree().current_scene.add_child(bunny)
-
 
