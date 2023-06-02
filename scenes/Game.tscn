@@ -22,8 +22,11 @@ bg_color = Color(0.501961, 0.501961, 0.501961, 1)
 bg_color = Color(0.886275, 0.192157, 0, 1)
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 
-[node name="Floor" type="Node2D" parent="."]
+[node name="Floor" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
 
 [node name="TileMap" type="TileMap" parent="Floor"]
 texture_filter = 1

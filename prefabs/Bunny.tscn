@@ -7,6 +7,7 @@
 size = Vector2(20, 22)
 
 [node name="Bunny" type="CharacterBody2D"]
+y_sort_enabled = true
 position = Vector2(125, 171)
 collision_layer = 3
 script = ExtResource("1_vhhk6")
