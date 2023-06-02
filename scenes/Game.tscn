@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://fk7or7k1s7a8"]
+[gd_scene load_steps=8 format=3 uid="uid://fk7or7k1s7a8"]
 
 [ext_resource type="PackedScene" uid="uid://c3q06in2bni0t" path="res://prefabs/Player.tscn" id="1_lb2s8"]
 [ext_resource type="Texture2D" uid="uid://b3oq8vvvilrgy" path="res://sprites/tiles/tiles.png" id="2_ndmwc"]
+[ext_resource type="Script" path="res://scripts/ScoreLabel.gd" id="3_a4xtx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ftrf"]
 texture = ExtResource("2_ndmwc")
@@ -12,6 +13,12 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_vopjn"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_1ftrf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj36f"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gg5e0"]
+bg_color = Color(0.886275, 0.192157, 0, 1)
 
 [node name="Game" type="Node2D"]
 
@@ -27,3 +34,20 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608,
 position = Vector2(720, 196)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: "
+script = ExtResource("3_a4xtx")
+
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+offset_top = 25.0
+offset_right = 144.0
+offset_bottom = 52.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hj36f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gg5e0")
+value = 50.0
+show_percentage = false
