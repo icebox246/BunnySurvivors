@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dp3fx77gtblcn" path="res://sprites/enemies/enemy.res" id="2_qq2bt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bnta"]
-size = Vector2(64, 64)
+size = Vector2(20, 22)
 
 [node name="Bunny" type="CharacterBody2D"]
 position = Vector2(125, 171)
@@ -12,6 +12,7 @@ collision_layer = 3
 script = ExtResource("1_vhhk6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 21)
 shape = SubResource("RectangleShape2D_1bnta")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
