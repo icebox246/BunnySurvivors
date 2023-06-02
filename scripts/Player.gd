@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 100.0
 
 var attack_area
 var game_master
+
+var attacking = false
 
 func _ready():
 	attack_area = $AttackArea
@@ -19,15 +21,28 @@ func _physics_process(_delta):
 
 	var movement = Vector2(movement_x, movement_y)
 
+	if not attacking:
+		if movement:
+			$AnimatedSprite2D.play('walk')
+		else:
+			$AnimatedSprite2D.stop()
 	velocity = movement * SPEED
 
 	if movement_x:
 		$AnimatedSprite2D.flip_h = movement_x < 0
 		attack_area.scale.x = -1 if movement_x < 0 else 1
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if not attacking and Input.is_action_just_pressed("ui_accept"):
+		attacking = true
+		$AnimatedSprite2D.play('attack')
+
+	move_and_slide()
+
+func _on_animated_sprite_2d_animation_finished():
+	print($AnimatedSprite2D.animation)
+	if $AnimatedSprite2D.animation == 'attack':
+		attacking = false
+		$AnimatedSprite2D.stop()
 		for body in attack_area.get_overlapping_bodies():
 			if body is Bunny:
 				body.bonk()
-
-	move_and_slide()
